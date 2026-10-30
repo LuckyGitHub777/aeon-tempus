@@ -98,7 +98,7 @@
     },
     {
       "path": "tests/test_browser.py",
-      "sha256": "223d56b3149b1411a17b0f15a98dff0831eefe114310dfb4f39517b898002550"
+      "sha256": "31947f581df5450be3ba4eb12f79ee887870f21c22c71b140910f57a52ef0790"
     },
     {
       "path": "tests/test_integrity.py",

@@ -23,7 +23,7 @@ with sync_playwright() as p:
     page.select_option('#scenarioSelect','decision'); page.click('#loadScenarioBtn'); a=page.locator('#trigger').input_value()
     page.select_option('#scenarioSelect','conflict'); page.click('#loadScenarioBtn'); assert page.locator('#trigger').input_value()!=a
     assert page.locator('#clarityDelta').inner_text()=='Not measured'
-    page.click('#completeBtn'); assert page.evaluate('document.activeElement.id')=='arrival'; assert page.locator('#arrival').evaluate('e=>e.classList.contains("error")')
+    page.click('#completeBtn'); page.wait_for_function("document.activeElement && document.activeElement.id === 'arrival'"); assert page.locator('#arrival').evaluate('e=>e.classList.contains("error")')
     vals={'arrival':'At a desk.','obscuration':'Source reliability unknown.','observed':'Two accounts disagree.','unresolved':'Reliability remains unresolved.','selected_action':'Compare against primary record.','lesson':'Keep uncertainty visible.'}
     page.evaluate("v=>{for(const [id,x] of Object.entries(v)){let e=document.getElementById(id);e.value=x;e.dispatchEvent(new Event('input',{bubbles:true}))}}",vals)
     page.evaluate("()=>{let e=document.getElementById('grounding');e.value='Movement or walk';e.dispatchEvent(new Event('input',{bubbles:true}));document.querySelectorAll('.step-check,.condition').forEach(x=>{x.checked=true;x.dispatchEvent(new Event('change',{bubbles:true}))})}")
