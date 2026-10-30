@@ -28,7 +28,7 @@ with sync_playwright() as p:
     tmp=Path(tempfile.mkdtemp())/dl.value.suggested_filename; dl.value.save_as(str(tmp))
     before=len(dialogs); page.reload(wait_until='load'); assert len(dialogs)==before
     page.remove_listener('dialog',accept_dialog)
-    page.locator('#obscuration').fill('my custom text'); page.select_option('#scenarioSelect','conflict')
+    page.click('article.chamber[data-step="2"] .chamber-head'); page.locator('#obscuration').fill('my custom text'); page.select_option('#scenarioSelect','conflict')
     seen=[]
     def dismiss_confirm(d): seen.append(d.message); d.dismiss()
     page.once('dialog',dismiss_confirm); page.click('#loadScenarioBtn')
