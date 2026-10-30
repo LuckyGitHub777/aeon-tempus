@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#050913">
-<meta name="description" content="Eclipse Node Theta-7 v1.1.2-rc1: an offline, human-governed coherence, decision, and validation interface within the AEON-TEMPUS framework.">
-<title>Eclipse Node Theta-7 v1.1.2-rc1 | AEON-TEMPUS</title>
+<meta name="description" content="Eclipse Node Theta-7 v1.1.3-rc1: an offline, human-governed coherence, decision, and validation interface within the AEON-TEMPUS framework.">
+<title>Eclipse Node Theta-7 v1.1.3-rc1 | AEON-TEMPUS</title>
 <style>
 :root{
   --void:#03050a;--night:#07101c;--panel:rgba(8,18,32,.82);--panel2:rgba(13,28,47,.72);
@@ -95,7 +95,7 @@ footer{border-top:1px solid var(--line);padding:2.2rem 4vw;color:var(--muted);di
 <a class="skip" href="#main">Skip to interface</a>
 <header class="hero" id="top">
   <div class="hero-inner">
-    <div class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span> AEON-TEMPUS · NODE ONLINE · v1.1.2-rc1</div>
+    <div class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span> AEON-TEMPUS · NODE ONLINE · v1.1.3-rc1</div>
     <h1>ECLIPSE NODE<br>THETA-7 <span>Temporal Threshold, Coherence Gate &amp; Validation Engine</span></h1>
     <p class="subtitle">A symbolic, human-governed browser system for turning uncertainty into a grounded decision, a traceable record, and testable proof of usefulness. Enter the threshold, preserve discernment, act responsibly, and return with agency intact.</p>
     <p class="status-text"><strong>Release status:</strong> technically verified pilot candidate. Real-user effectiveness, formal accessibility conformance, and scientific claims are not established.</p>
@@ -152,7 +152,7 @@ footer{border-top:1px solid var(--line);padding:2.2rem 4vw;color:var(--muted);di
 
 <section id="architecture">
   <div class="section-head">
-    <div><div class="kicker">Canonical Engineering Specification v1.1.2-rc1</div><h2>The Seven-Chamber Architecture</h2><p class="lead">Completion requires coherence, not certainty. Work through each chamber, then generate a traceable Theta-7 Node Record.</p></div>
+    <div><div class="kicker">Canonical Engineering Specification v1.1.3-rc1</div><h2>The Seven-Chamber Architecture</h2><p class="lead">Completion requires coherence, not certainty. Work through each chamber, then generate a traceable Theta-7 Node Record.</p></div>
     <div class="progress-wrap" aria-live="polite"><div class="progress-ring" id="progressRing"><span id="progressText">0/7</span></div></div>
   </div>
   <div class="notice"><div class="notice-icon">◈</div><div><b>Interpretive boundary:</b> Theta-7 is presented as a symbolic, contemplative, narrative, and decision-support architecture. This interface does not establish a literal spacetime portal, extraterrestrial installation, or scientifically verified external mechanism.</div></div>
@@ -324,13 +324,13 @@ footer{border-top:1px solid var(--line);padding:2.2rem 4vw;color:var(--muted);di
   <div class="completion-summary"><div><b>Grounded action</b><span id="completionAction">Recorded</span></div><div><b>Clarity change</b><span id="completionDelta">Not measured</span></div><div><b>Evidence state</b><span id="completionEvidence">Session complete</span></div></div><div class="transmission">I AM HERE NOW.<br>I ENTER THE THRESHOLD WITHOUT SURRENDERING DISCERNMENT.<br>I OBSERVE THE SHADOW WITHOUT FEEDING IT INVENTED FORM.<br>I HONOR SYMBOL WITHOUT CONFUSING IT WITH PROOF.<br>I PRESERVE MEMORY WITHOUT REWRITING HISTORY.<br>I CHOOSE WITHOUT COERCION.<br>I ACT WITHOUT HARM.<br>I RETURN WITH AGENCY INTACT.</div>
 </section>
 </main>
-<footer><span class="footer-mark">AEON-TEMPUS · ECLIPSE NODE THETA-7</span><span>v1.1.2-rc1 · Single-file offline interface · No network requests · Human-governed · Pilot candidate</span></footer>
+<footer><span class="footer-mark">AEON-TEMPUS · ECLIPSE NODE THETA-7</span><span>v1.1.3-rc1 · Single-file offline interface · No network requests · Human-governed · Pilot candidate</span></footer>
 <div class="toast" id="toast" role="status"></div>
 <script>
 (()=>{
 'use strict';
-const STORAGE='aeon-tempus-theta7-v1-1-2-rc1';
-const LEGACY_STORAGES=['aeon-tempus-theta7-v1-1-1-rc2','aeon-tempus-theta7-v1-1-1-rc1','aeon-tempus-theta7-v1'];
+const STORAGE='aeon-tempus-theta7-v1-1-3-rc1';
+const LEGACY_STORAGES=['aeon-tempus-theta7-v1-1-2-rc1','aeon-tempus-theta7-v1-1-1-rc2','aeon-tempus-theta7-v1-1-1-rc1','aeon-tempus-theta7-v1'];
 const MEMORY_STORAGE=new Map();
 const FILE_MODE=location.protocol==='file:';
 let persistentStorage=!FILE_MODE;
@@ -338,6 +338,13 @@ const storageMode=()=>persistentStorage?'browser-localStorage':(FILE_MODE?'sessi
 function storageGet(key){if(!persistentStorage)return MEMORY_STORAGE.has(key)?MEMORY_STORAGE.get(key):null;try{return window.localStorage.getItem(key)}catch(e){persistentStorage=false;return MEMORY_STORAGE.has(key)?MEMORY_STORAGE.get(key):null}}
 function storageSet(key,value){const v=String(value);if(!persistentStorage){MEMORY_STORAGE.set(key,v);return false}try{window.localStorage.setItem(key,v);return true}catch(e){persistentStorage=false;MEMORY_STORAGE.set(key,v);return false}}
 function storageRemove(key){if(persistentStorage){try{window.localStorage.removeItem(key)}catch(e){persistentStorage=false}}MEMORY_STORAGE.delete(key)}
+let dirtySinceExport=false;
+const DIRTY_IGNORE=new Set(['nodeId','nodeTime','sessionStart','clarityBeforeRated','clarityAfterRated']);
+function hasEnteredData(){return $$('[data-save]').some(el=>{if(DIRTY_IGNORE.has(el.id))return false;if(el.type==='checkbox')return el.checked;return String(el.value||'').trim()!==''})}
+function sessionStateText(){return dirtySinceExport&&hasEnteredData()?'Not saved — export to keep':(FILE_MODE?'Session only · local-file privacy':'Session only')}
+function refreshSessionState(){if(!persistentStorage&&$('#saveState'))$('#saveState').textContent=sessionStateText()}
+function markExported(){dirtySinceExport=false;if(!persistentStorage&&$('#saveState'))$('#saveState').textContent='Exported · session only'}
+function clearRealLocalKeys(keys){let removed=false;for(const key of keys){try{if(window.localStorage.getItem(key)!==null){removed=true;window.localStorage.removeItem(key)}}catch(e){}}return removed}
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const pad=n=>String(n).padStart(2,'0');
 const nowLocal=()=>{const d=new Date();return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`};
@@ -346,9 +353,9 @@ const exportStem=()=>{const raw=($('#nodeId')?.value||nodeStamp()).replace(/^Θ-
 if(!$('#nodeId').value) $('#nodeId').value=nodeStamp();
 if(!$('#nodeTime').value) $('#nodeTime').value=nowLocal();
 function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),2600)}
-function collect(){const data={meta:{system:'AEON-TEMPUS',node:'Eclipse Node Theta-7',version:'1.1.2-rc1',storage_mode:storageMode(),exported_at:new Date().toISOString(),interpretive_boundary:'Symbolic contemplative decision and validation architecture; not evidence of a literal portal or external mechanism. Pilot metrics must not be overstated.'},fields:{},completed_steps:[]};$$('[data-save]').forEach((el,i)=>{const key=el.id||`${el.className.replace(/\s+/g,'_')}_${i}`;data.fields[key]=el.type==='checkbox'?el.checked:el.value});$$('.chamber').forEach(c=>{if(c.dataset.complete==='true')data.completed_steps.push(Number(c.dataset.step))});return data}
+function collect(){const data={meta:{system:'AEON-TEMPUS',node:'Eclipse Node Theta-7',version:'1.1.3-rc1',storage_mode:storageMode(),exported_at:new Date().toISOString(),interpretive_boundary:'Symbolic contemplative decision and validation architecture; not evidence of a literal portal or external mechanism. Pilot metrics must not be overstated.'},fields:{},completed_steps:[]};$$('[data-save]').forEach((el,i)=>{const key=el.id||`${el.className.replace(/\s+/g,'_')}_${i}`;data.fields[key]=el.type==='checkbox'?el.checked:el.value});$$('.chamber').forEach(c=>{if(c.dataset.complete==='true')data.completed_steps.push(Number(c.dataset.step))});return data}
 function hydrate(data){if(!data||!data.fields)return;$$('[data-save]').forEach((el,i)=>{const key=el.id||`${el.className.replace(/\s+/g,'_')}_${i}`;let sourceKey=key;if(!(sourceKey in data.fields)&&data.meta?.version==='1.0.0'&&!el.id){const legacyKey=`${el.className.replace(/\s+/g,'_')}_${i-1}`;if(legacyKey in data.fields)sourceKey=legacyKey}if(!(sourceKey in data.fields))return;if(el.type==='checkbox')el.checked=!!data.fields[sourceKey];else el.value=data.fields[sourceKey]});updateProgress();syncRecord()}
-function save(silent=false){const persisted=storageSet(STORAGE,JSON.stringify(collect()));const sessionLabel=FILE_MODE?'Session only · local-file privacy':'Session only';$('#saveState').textContent=persisted?'Saved '+new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}):sessionLabel;if(!silent)toast(persisted?'Theta-7 record saved locally':(FILE_MODE?'For privacy, downloaded-file entries stay in this session; export for a durable copy':'Persistent browser storage unavailable; record kept for this session only'))}
+function save(silent=false){const persisted=storageSet(STORAGE,JSON.stringify(collect()));if(persisted)$('#saveState').textContent='Saved '+new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});else refreshSessionState();if(!silent)toast(persisted?'Theta-7 record saved locally':(dirtySinceExport?'Not saved — export to keep':'Record kept for this session only'))}
 function syncRecord(){const pairs=[['observed','recordObserved'],['symbolic','recordSymbolic'],['unresolved','recordUncertainty'],['emotion','emotionalState']];pairs.forEach(([a,b])=>{const A=$('#'+a),B=$('#'+b);if(A&&B&&!B.value.trim()&&A.value.trim())B.value=A.value});const selected=$('#selected_action')?.value.trim();if(selected&&$('#recordAction'))$('#recordAction').value=selected;const ints=['pattern','hopefear','evidence_change'].map(id=>$('#'+id).value.trim()).filter(Boolean).join('\n\n');if(!$('#interpretations').value.trim()&&ints)$('#interpretations').value=ints}
 
 function updateValidation(){
@@ -454,7 +461,8 @@ ${val('selected_action')||'Not recorded'}
 function updateProgress(){const checks=$$('.step-check');checks.forEach(ch=>{const card=ch.closest('.chamber');card.dataset.complete=String(ch.checked);$('.state',card).textContent=ch.checked?'Complete':'Incomplete'});const n=checks.filter(c=>c.checked).length;$('#progressText').textContent=`${n}/7`;$('#progressRing').style.setProperty('--p',(n/7)*100);if($('#validationCompletion'))$('#validationCompletion').textContent=`${n}/7`;return n}
 $$('.chamber-head').forEach(btn=>btn.addEventListener('click',()=>{const card=btn.closest('.chamber'),open=card.classList.toggle('open');btn.setAttribute('aria-expanded',String(open))}));
 $$('.step-check').forEach(ch=>ch.addEventListener('change',()=>{updateProgress();save(true);if(ch.checked){const next=ch.closest('.chamber').nextElementSibling;if(next&&next.classList.contains('chamber')){next.classList.add('open');$('.chamber-head',next).setAttribute('aria-expanded','true')}}}));
-$$('[data-save]').forEach(el=>el.addEventListener(el.type==='checkbox'?'change':'input',()=>{$('#saveState').textContent='Unsaved changes';clearTimeout(window.__autosave);window.__autosave=setTimeout(()=>save(true),650);updateValidation()}));
+$$('[data-save]').forEach(el=>el.addEventListener(el.type==='checkbox'?'change':'input',()=>{clearFieldError(el);if(!persistentStorage){dirtySinceExport=hasEnteredData();refreshSessionState()}else $('#saveState').textContent='Unsaved changes';clearTimeout(window.__autosave);window.__autosave=setTimeout(()=>save(true),650);updateValidation()}));
+window.addEventListener('beforeunload',e=>{if(!persistentStorage&&dirtySinceExport&&hasEnteredData()){e.preventDefault();e.returnValue=''}});
 
 const scenarios={
   decision:{trigger:'A consequential decision must be made before all desired information is available.',obscuration:'The likely consequences, missing information, and acceptable trade-offs are not yet fully clear.',validation:'Important decision with incomplete information'},
@@ -463,22 +471,26 @@ const scenarios={
   change:{trigger:'A major personal or professional transition requires a grounded next step.',obscuration:'Identity, timing, risk, and future options feel unsettled.',validation:'Major personal or professional transition'},
   technology:{trigger:'A high-impact technology decision presents opportunity, uncertainty, and possible harm.',obscuration:'Benefits, failure modes, governance requirements, and human consequences are not fully resolved.',validation:'High-impact technology decision'}
 };
-$('#loadScenarioBtn')?.addEventListener('click',()=>{const key=$('#scenarioSelect').value,item=scenarios[key];if(!item){toast('Choose a scenario first');return}$('#trigger').value=item.trigger;$('#obscuration').value=item.obscuration;$('#validationScenario').value=item.validation;if(!$('#sessionStart').value)$('#sessionStart').value=new Date().toISOString();save(true);$('#architecture').scrollIntoView({behavior:'smooth'});setTimeout(()=>$('#arrival').focus(),450);toast('Selected starting prompt loaded')});
+function hasCustomScenarioText(){const trigger=$('#trigger').value.trim(),obscuration=$('#obscuration').value.trim(),items=Object.values(scenarios);return (!!trigger&&!items.some(x=>x.trigger===trigger))||(!!obscuration&&!items.some(x=>x.obscuration===obscuration))}
+$('#loadScenarioBtn')?.addEventListener('click',()=>{const key=$('#scenarioSelect').value,item=scenarios[key];if(!item){toast('Choose a scenario first');return}if(hasCustomScenarioText()&&!confirm('Replace your text with the sample scenario?')){toast('Your text was kept');return}$('#trigger').value=item.trigger;$('#obscuration').value=item.obscuration;$('#validationScenario').value=item.validation;if(!$('#sessionStart').value)$('#sessionStart').value=new Date().toISOString();if(!persistentStorage){dirtySinceExport=hasEnteredData();refreshSessionState()}save(true);$('#architecture').scrollIntoView({behavior:'smooth'});setTimeout(()=>$('#arrival').focus(),450);toast('Selected starting prompt loaded')});
 [['clarityBefore','clarityBeforeRated'],['clarityAfter','clarityAfterRated']].forEach(([id,flag])=>$('#'+id)?.addEventListener('input',()=>{$('#'+flag).value='yes';updateValidation()}));
 
 $('#beginBtn').addEventListener('click',()=>{if(!$('#sessionStart').value)$('#sessionStart').value=new Date().toISOString();$('#architecture').scrollIntoView({behavior:'smooth'});setTimeout(()=>$('#arrival').focus(),500)});
 $('#saveBtn').addEventListener('click',()=>{syncRecord();save()});
-$('#exportMdBtn').addEventListener('click',()=>{const blob=new Blob([markdownSummary()],{type:'text/markdown'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=exportStem()+'_SUMMARY.md';document.body.appendChild(a);a.click();URL.revokeObjectURL(a.href);a.remove();toast('Decision-ready summary exported')});
+$('#exportMdBtn').addEventListener('click',()=>{const blob=new Blob([markdownSummary()],{type:'text/markdown'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=exportStem()+'_SUMMARY.md';document.body.appendChild(a);a.click();URL.revokeObjectURL(a.href);a.remove();markExported();toast('Decision-ready summary exported')});
 $('#printBtn').addEventListener('click',()=>{syncRecord();window.print()});
-$('#exportBtn').addEventListener('click',()=>{syncRecord();const data=collect();const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=exportStem()+'.json';document.body.appendChild(a);a.click();URL.revokeObjectURL(a.href);a.remove();toast('JSON record exported')});
-function clearErrors(){$$('.error').forEach(e=>e.classList.remove('error'));$$('.error-msg').forEach(e=>e.remove())}
-function markError(el,msg){el.classList.add('error');const n=document.createElement('div');n.className='error-msg';n.textContent=msg;el.parentElement.appendChild(n)}
+$('#exportBtn').addEventListener('click',()=>{syncRecord();const data=collect();const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=exportStem()+'.json';document.body.appendChild(a);a.click();URL.revokeObjectURL(a.href);a.remove();markExported();toast('JSON record exported')});
+let errorSeq=0;
+function clearFieldError(el){if(!el)return;const id=el.getAttribute('aria-describedby');if(id)document.getElementById(id)?.remove();el.classList.remove('error');el.removeAttribute('aria-invalid');el.removeAttribute('aria-describedby')}
+function clearErrors(){$$('[aria-invalid="true"]').forEach(clearFieldError);$$('.error').forEach(e=>e.classList.remove('error'));$$('.error-msg').forEach(e=>e.remove())}
+function markError(el,msg){clearFieldError(el);el.classList.add('error');const n=document.createElement('div');n.className='error-msg';n.id=`field-error-${el.id||'field'}-${++errorSeq}`;n.textContent=msg;el.parentElement.appendChild(n);el.setAttribute('aria-invalid','true');el.setAttribute('aria-describedby',n.id)}
 function revealError(el){if(!el)return;const chamber=el.closest('.chamber');if(chamber){chamber.classList.add('open');$('.chamber-head',chamber)?.setAttribute('aria-expanded','true')}requestAnimationFrame(()=>{el.scrollIntoView({behavior:'smooth',block:'center'});if(typeof el.focus==='function')el.focus({preventScroll:true})})}
 $('#completeBtn').addEventListener('click',()=>{clearErrors();syncRecord();const n=updateProgress();let bad=[];let firstProblem=null;if(n<7){const unchecked=$$('.step-check').find(c=>!c.checked);if(unchecked)unchecked.closest('.complete-row')?.classList.add('error');bad.push('Complete all seven chamber confirmations.')}const requiredFields=[['arrival','Record one present-moment observation.'],['obscuration','Name what is obscured or uncertain.'],['observed','Record what was directly observed.'],['unresolved','Record what remains unresolved.'],['selected_action','Select one grounded action.'],['lesson','Record the lesson retained.']];requiredFields.forEach(([id,msg])=>{const el=$('#'+id);if(!el.value.trim()){markError(el,msg);if(!firstProblem)firstProblem=el;bad.push(msg)}});if(!firstProblem&&n<7)firstProblem=$$('.step-check').find(c=>!c.checked);const conditions=$$('.condition');if(!conditions.every(c=>c.checked)){conditions.filter(c=>!c.checked).forEach(c=>c.closest('.check').classList.add('error'));if(!firstProblem)firstProblem=conditions.find(c=>!c.checked);bad.push('Confirm all four action conditions.')}if(!$('#grounding').value){markError($('#grounding'),'Choose a grounded return activity.');if(!firstProblem)firstProblem=$('#grounding');bad.push('Select a grounded return activity.')}if(bad.length){toast(bad[0]);revealError(firstProblem);return}const v=updateValidation();if(!$('#timeMinutes').value.trim()){const mins=elapsedMinutes();if(mins)$('#timeMinutes').value=mins+' minutes'};$('#completionAction').textContent=($('#selected_action').value||'Recorded').trim();$('#completionDelta').textContent=v.delta===null?'Not measured':((v.delta>0?'+':'')+v.delta+' clarity points');$('#completionEvidence').textContent=v.status;$('#completion').classList.add('show');save(true);$('#completion').scrollIntoView({behavior:'smooth',block:'center'});toast(persistentStorage?'Theta-7 sequence completion recorded':'Theta-7 sequence completed for this session; export for a durable copy')});
 $('#mobileCompleteBtn')?.addEventListener('click',()=>$('#completeBtn').click());
-$('#resetBtn').addEventListener('click',()=>{if(!confirm('Reset all Theta-7 fields and local state?'))return;storageRemove(STORAGE);LEGACY_STORAGES.forEach(storageRemove);$$('[data-save]').forEach(el=>{if(el.type==='checkbox')el.checked=false;else el.value=''});$('#nodeId').value=nodeStamp();$('#nodeTime').value=nowLocal();$('#completion').classList.remove('show');updateProgress();updateValidation();$('#saveState').textContent=persistentStorage?'Reset':(FILE_MODE?'Session only · local-file privacy':'Session only');toast('Theta-7 interface reset')});
-let stored=storageGet(STORAGE);if(!stored){for(const legacyKey of LEGACY_STORAGES){const legacy=storageGet(legacyKey);if(!legacy)continue;try{const parsed=JSON.parse(legacy);hydrate(parsed);storageSet(STORAGE,JSON.stringify(collect()));storageRemove(legacyKey);stored=null;$('#saveState').textContent=persistentStorage?'Migrated locally':(FILE_MODE?'Session only · local-file privacy':'Session only');break}catch(e){console.warn(e)}}}if(stored){try{hydrate(JSON.parse(stored));$('#saveState').textContent=persistentStorage?'Restored locally':(FILE_MODE?'Session only · local-file privacy':'Session only')}catch(e){console.warn(e)}}else if(!persistentStorage){$('#saveState').textContent=FILE_MODE?'Session only · local-file privacy':'Session only';if(FILE_MODE)$('#saveBtn').textContent='Keep This Session'}
-updateProgress();updateValidation();
+$('#resetBtn').addEventListener('click',()=>{if(!confirm('Reset all Theta-7 fields and local state?'))return;storageRemove(STORAGE);try{window.localStorage.removeItem(STORAGE)}catch(e){}LEGACY_STORAGES.forEach(key=>{storageRemove(key);try{window.localStorage.removeItem(key)}catch(e){}});dirtySinceExport=false;$$('[data-save]').forEach(el=>{if(el.type==='checkbox')el.checked=false;else el.value=''});$('#nodeId').value=nodeStamp();$('#nodeTime').value=nowLocal();$('#completion').classList.remove('show');updateProgress();updateValidation();$('#saveState').textContent=persistentStorage?'Reset':sessionStateText();toast('Theta-7 interface reset')});
+const removedLegacyOnLoad=FILE_MODE?clearRealLocalKeys(LEGACY_STORAGES):false;
+let stored=storageGet(STORAGE);if(!stored&&!FILE_MODE){for(const legacyKey of LEGACY_STORAGES){const legacy=storageGet(legacyKey);if(!legacy)continue;try{const parsed=JSON.parse(legacy);hydrate(parsed);storageSet(STORAGE,JSON.stringify(collect()));storageRemove(legacyKey);stored=null;$('#saveState').textContent=persistentStorage?'Migrated locally':sessionStateText();break}catch(e){console.warn(e)}}}if(stored){try{hydrate(JSON.parse(stored));$('#saveState').textContent=persistentStorage?'Restored locally':sessionStateText()}catch(e){console.warn(e)}}else if(!persistentStorage){refreshSessionState();if(FILE_MODE)$('#saveBtn').textContent='Keep This Session'}
+updateProgress();updateValidation();if(removedLegacyOnLoad)setTimeout(()=>toast('Removed data saved by an earlier version'),120);
 })();
 </script>
 </body>

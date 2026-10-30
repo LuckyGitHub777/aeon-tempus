@@ -1,8 +1,8 @@
 {
   "project": "AEON-TEMPUS / Eclipse Node Theta-7",
-  "version": "1.1.2-rc1",
+  "version": "1.1.3-rc1",
   "built": "2026-10-30",
-  "status": "public UX-corrective technically verified pilot candidate",
+  "status": "public privacy/data-loss corrective pilot candidate",
   "files": [
     {
       "path": ".github/workflows/deploy-pages.yml",
@@ -10,7 +10,7 @@
     },
     {
       "path": ".github/workflows/publish-prerelease.yml",
-      "sha256": "a612967c6dad06df3dd0aafc8b4deb8bf70385b887696fcafb1b8f1e23e63c91"
+      "sha256": "a646d4f63c46f83de5a2f0d259ae346c0fa36fa8ab8b06d21515408d5b4f7fdb"
     },
     {
       "path": ".github/workflows/validate.yml",
@@ -22,7 +22,7 @@
     },
     {
       "path": "CHANGELOG.md",
-      "sha256": "56c8471fd1227c2f8191fbb958744b2924a93978ab1746bc0e25865779e448db"
+      "sha256": "4fe6a78c859a91de612524f4c5071d264e8db714c1a336a41ba4c009a0e44e3f"
     },
     {
       "path": "NOTICE.md",
@@ -30,11 +30,11 @@
     },
     {
       "path": "README.md",
-      "sha256": "c2af7da1e99dfbf86fc8dd757c5bebb01bdcf39db2aae4ec3eeee614566138ef"
+      "sha256": "a1f86b3c33a03ed412bf086936c3625816707dfca6a94caa804a4d4262621708"
     },
     {
       "path": "RELEASE_SHA256SUMS.txt",
-      "sha256": "7164022e9bc26030f159d473d904cc83652113809b93a4e94fba75bdd4d1a069"
+      "sha256": "1192abb1e6c5b7a3aa19c9ba0f5df81d578f6a1ed1720e597bb743eebc61dbf5"
     },
     {
       "path": "archive/audit/AEON_TEMPUS_THETA7_FULL_CHAT_VV_REPORT_2026-08-06.md",
@@ -70,7 +70,7 @@
     },
     {
       "path": "docs/VALIDATION_PLAN.md",
-      "sha256": "4b24cc6229a908e25f13193b202c7bafe704ca8163a5b4f5f07c82a061a4e892"
+      "sha256": "e915a927e6d8294a6558233e5309f53f48b0ad365d2fdae6c87949500e0ac738"
     },
     {
       "path": "docs/VV_EVIDENCE_2026-10-30.md",
@@ -78,15 +78,15 @@
     },
     {
       "path": "docs/VV_STATUS_2026-10-30.md",
-      "sha256": "f584b77e983bc17ff63885e634f57be449906004a18c845ba279e6c20e3cdb6d"
+      "sha256": "8053d9853cbcf889d48655d817464adca4d8f820b37e0dd0f4636d24cc0aa49b"
     },
     {
       "path": "docs/VV_UX_REVIEW_2026-10-30.md",
-      "sha256": "f4fe800cdf0738cbf30532ce97e82a91bb270a5151935f2fba2bc7247ce5f59b"
+      "sha256": "e3d5dd8ffcc2e74a69f074bdb664548521ddf003914d3048f0a55782843ad24d"
     },
     {
       "path": "index.html",
-      "sha256": "09c17e62b84726282e5332f5bd4daf6ed14020b3aa7a5587f158448e6bb9f50a"
+      "sha256": "b730b20d11b915e46a469c99f88af31063ed53018fd8ece156a0fe303c909130"
     },
     {
       "path": "releases/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.1-rc1.html",
@@ -97,16 +97,20 @@
       "sha256": "09c17e62b84726282e5332f5bd4daf6ed14020b3aa7a5587f158448e6bb9f50a"
     },
     {
+      "path": "releases/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.3-rc1.html",
+      "sha256": "b730b20d11b915e46a469c99f88af31063ed53018fd8ece156a0fe303c909130"
+    },
+    {
       "path": "tests/test_browser.py",
-      "sha256": "31947f581df5450be3ba4eb12f79ee887870f21c22c71b140910f57a52ef0790"
+      "sha256": "d3dc6f85da146d283a2a9395bfe5ba2b41a900b36309c241c69840fc146d0089"
     },
     {
       "path": "tests/test_integrity.py",
-      "sha256": "37a3a7628f28859a6f71e6217aa3ad8fbafd49f820c097ccc4f62b778f265c3b"
+      "sha256": "839fe7ec477551e59bac883de2a053630ccd2de1b5270bc6711d2b2b2761795b"
     },
     {
       "path": "tests/test_static.py",
-      "sha256": "099fcc480d7594be6580608b4d6a7a8c82c062fd82b2cc22f6692caa5731d358"
+      "sha256": "a94696e46205028384f1fccb568ae1a77e88cfa44e9dfba55ed01e455363c036"
     }
   ]
 }

@@ -1,49 +1,35 @@
 # V&V / UX Review — 2026-10-30
 
-## Source
-This corrective record incorporates the user-supplied end-to-end review reproduced in chat on 2026-10-30. That review reported testing of the public repository, prerelease download, checksum path, downloaded HTML, browser behavior, privacy behavior, and automated accessibility scanning. Claims in the original report that were not independently reproduced by this corrective pass remain attributed to that source.
+## Independent review findings
 
-## Reproduced / accepted defects in v1.1.1-rc1
-1. Release checksum file named repository paths rather than the downloaded HTML asset, so a normal `sha256sum -c` release verification failed.
-2. Markdown summary omitted required chamber content and could report stale action data.
-3. Missing-field errors inside collapsed chambers were not visibly revealed.
-4. Completion could fail when persistent browser storage was unavailable.
-5. The privacy notice appeared after extensive input and local-file persistence exposed records to other local HTML files sharing the browser's file origin.
-6. Default range positions produced a neutral clarity result even when the user never rated clarity.
-7. Same-tag release automation could leave an older asset published after repository changes.
+An independent end-to-end review of the public repository, release download, checksum path, downloaded HTML, browser behavior, privacy behavior, and automated checks identified four remaining corrective areas after v1.1.2-rc1:
 
-Additional UX findings: print title visibility, desktop chevron wrapping, distant mobile completion control, oversized embedded image, second scenario not replacing the first, and non-clickable README links.
+1. **Session-only data loss risk:** local-file/session-only work could be lost by closing or reloading without an explicit export warning.
+2. **Legacy local-file privacy:** earlier localStorage records needed removal without hydration when running as a downloaded local file.
+3. **Scenario overwrite protection:** loading a sample could replace custom trigger or obscuration text without confirmation.
+4. **Error semantics:** visible required-field errors needed programmatic `aria-invalid` / `aria-describedby` relationships and automatic clearing after correction.
 
-## Corrective disposition in v1.1.2-rc1
-- **Checksum:** fixed with a release-specific checksum asset naming the downloaded HTML basename.
-- **Integrity:** new CI test verifies every path listed in `SHA256SUMS.txt` and checks the manifest's declared digests.
-- **Export:** fixed; all seven chambers, lesson, grounded return, current selected action, node record, and measurement state are exported.
-- **Error visibility:** fixed; the relevant chamber opens and the first missing field receives focus.
-- **Storage failure:** fixed; in-memory session fallback preserves the active workflow.
-- **Local-file privacy:** fixed by defaulting `file://` use to session-only memory; durable records require explicit export.
-- **Clarity:** fixed; no delta or neutral signal is emitted until both sliders are explicitly rated.
-- **Release freshness:** fixed; same-tag reruns compare the published asset digest against repository bytes and fail on mismatch.
-- **Print/desktop/mobile/scenario/README/image size:** corrected.
+## v1.1.3-rc1 corrective requirements
 
-## Controlled browser regression result
-The corrective build was exercised in headless Chromium against the exact HTML bytes. Direct `file://` navigation is blocked by this audit environment, so the file-mode branch was simulated by forcing the same `FILE_MODE` branch while loading the exact document content. The following passed:
+- A dirty local/session-only record shows **Not saved — export to keep**.
+- Leaving with unexported edits triggers browser before-unload protection; successful JSON or Markdown export clears the dirty state.
+- Local-file startup removes compatible legacy localStorage keys and never hydrates them.
+- Reset clears current and compatible legacy real-localStorage keys.
+- Custom trigger or obscuration text requires confirmation before a sample scenario replaces it.
+- Required input errors set `aria-invalid="true"` and reference a concrete error message via `aria-describedby`; correcting the field removes both.
+- The v1.1.2-rc1 release file remains byte-for-byte unchanged.
+- Release automation fails closed when an existing tag's published HTML digest differs from repository bytes.
 
-- session-only file privacy state;
-- no external network requests;
-- no JavaScript console/page errors;
-- scenario replacement;
-- default clarity remains `Not rated` / `Not measured`;
-- collapsed missing-field chamber is revealed and focused;
-- seven-chamber completion succeeds with persistent storage unavailable;
-- Markdown export includes all required chamber/return fields and the latest selected action;
-- explicit clarity ratings produce the expected delta and session signal;
-- print title remains visible;
-- desktop chevron aligns with the chamber header row;
-- 375 px mobile viewport has no horizontal overflow;
-- fixed mobile `Review & Complete` control is visible.
+## Verification gates
 
-## Remaining evidence limitations
-- Direct local-file navigation could not be re-run in this audit environment because Chromium returned `ERR_BLOCKED_BY_ADMINISTRATOR`; the user-supplied review did independently exercise downloaded-file behavior on Chrome.
-- Safari, Firefox, real-phone, and screen-reader testing remain open.
-- An earlier automated accessibility scan was reported as 0 issues by the user-supplied review, but this corrective pass did not independently rerun that specific scanner.
-- Real-user effectiveness remains unvalidated.
+The regression suite must exercise the direct `file://` path in Chrome, including:
+- unload warning before export and no warning after export;
+- legacy key removal with no hydration into `#arrival`;
+- scenario confirmation with dismiss preserving custom text;
+- accessible error semantics and clearing on correction.
+
+Static and integrity jobs must pass, followed by release publication and checksum verification.
+
+## Remaining validation beyond this corrective release
+
+Safari/Firefox, real phones, manual screen-reader/WCAG review, and a 5–10-person pilot remain separate evidence gates. They evaluate broader compatibility and real-user effectiveness rather than the corrected functional scope.
