@@ -1,0 +1,31 @@
+name: publish-prerelease
+on:
+  push:
+    branches: [main]
+    paths:
+      - "releases/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.1-rc1.html"
+      - "SHA256SUMS.txt"
+      - ".github/workflows/publish-prerelease.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Publish verified pilot candidate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view v1.1.1-rc1 >/dev/null 2>&1; then
+            echo "v1.1.1-rc1 already exists; leaving it unchanged."
+            exit 0
+          fi
+          gh release create v1.1.1-rc1 \
+            releases/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.1-rc1.html \
+            SHA256SUMS.txt \
+            --target "$GITHUB_SHA" \
+            --title "AEON-TEMPUS Theta-7 v1.1.1-rc1" \
+            --notes "Technically verified pilot candidate. Symbolic, human-governed uncertainty-reflection and decision-support interface. This prerelease does not establish paranormal or scientific claims. Download the single HTML file, verify it with SHA256SUMS.txt, and open it in a modern browser." \
+            --prerelease

@@ -13,15 +13,28 @@ AEON-TEMPUS began as a mythic cosmology about eternity, time, memory, and civili
 
 The current single-file interface helps a user separate observation from interpretation, preserve uncertainty, select a safe and consent-respecting action, record the outcome, and deliberately return to ordinary reality.
 
-## Use
+## Use now
 
-Open `index.html` in a modern browser. The application is self-contained and makes no network requests.
+The current pilot candidate is distributed directly through GitHub Releases:
 
-The public GitHub Pages deployment is intended to be available at:
+`https://github.com/LuckyGitHub777/aeon-tempus/releases/tag/v1.1.1-rc1`
+
+Download `AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.1-rc1.html`, then open it in a modern browser. It is a self-contained single-file application and makes no network requests.
+
+The same current build is preserved at:
+
+- `index.html`
+- `releases/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.1-rc1.html`
+
+Verify downloaded artifacts against `SHA256SUMS.txt`.
+
+### Optional GitHub Pages
+
+The repository includes a pinned manual Pages deployment workflow. The intended URL is:
 
 `https://luckygithub777.github.io/aeon-tempus/`
 
-Deployment status is verified separately from repository publication; see the current V&V status.
+Pages is an optional hosted presentation layer; the GitHub Release remains the verified distribution path until Pages is separately enabled and its public result is verified.
 
 ## Current release candidate
 

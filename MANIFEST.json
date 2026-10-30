@@ -9,6 +9,10 @@
       "sha256": "e6d3f614b1adfb7166679ae06b06583731ef093f716ce9ce16e0e2cdd4172524"
     },
     {
+      "path": ".github/workflows/publish-prerelease.yml",
+      "sha256": "a47a216fb5b3895a47a724f9f6a8e50e247cad748c7401a4e7e906e178750fe5"
+    },
+    {
       "path": ".github/workflows/validate.yml",
       "sha256": "5404db9a653caa62e7134549fef1adf46fdf7233d30d2b0cf81f3bd3e9b79e61"
     },
@@ -26,7 +30,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "43bbd127c25e7a8a2a4f54b311196b17ff5059bf6bae3569a7d6113773ffed77"
+      "sha256": "971fa1a1253d259c196c9f5269e562dd2d2ca302bcff12a16ddbd21565d5cee8"
     },
     {
       "path": "archive/audit/AEON_TEMPUS_THETA7_FULL_CHAT_VV_REPORT_2026-08-06.md",
