@@ -13,3 +13,18 @@ jobs:
         with:
           python-version: '3.x'
       - run: python tests/test_static.py
+      - run: python tests/test_integrity.py
+  browser-vv:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.x'
+      - run: python -m pip install --disable-pip-version-check playwright==1.57.0
+      - name: Detect system browser
+        run: |
+          BROWSER_PATH="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          test -n "$BROWSER_PATH"
+          echo "THETA7_BROWSER_PATH=$BROWSER_PATH" >> "$GITHUB_ENV"
+      - run: python tests/test_browser.py

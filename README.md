@@ -2,7 +2,7 @@
 
 A symbolic, human-governed uncertainty-reflection and decision-support interface.
 
-> **Status:** v1.1.1-rc1 — technically verified pilot candidate.  
+> **Status:** v1.1.2-rc1 — UX-corrective, technically verified pilot candidate.  
 > **Evidence boundary:** this project does **not** establish a literal spacetime portal, extraterrestrial installation, temporal mechanism, or other paranormal/scientific claim.
 
 ## What it is
@@ -15,68 +15,82 @@ The current single-file interface helps a user separate observation from interpr
 
 ## Use now
 
-The current pilot candidate is distributed directly through GitHub Releases:
+[Open the current GitHub prerelease](https://github.com/LuckyGitHub777/aeon-tempus/releases/tag/v1.1.2-rc1).
 
-`https://github.com/LuckyGitHub777/aeon-tempus/releases/tag/v1.1.1-rc1`
+Download:
 
-Download `AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.1-rc1.html`, then open it in a modern browser. It is a self-contained single-file application and makes no network requests.
+- [`AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.2-rc1.html`](https://github.com/LuckyGitHub777/aeon-tempus/releases/download/v1.1.2-rc1/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.2-rc1.html)
+- [`RELEASE_SHA256SUMS.txt`](https://github.com/LuckyGitHub777/aeon-tempus/releases/download/v1.1.2-rc1/RELEASE_SHA256SUMS.txt)
 
-The same current build is preserved at:
+Place both files in the same folder and verify with:
 
-- `index.html`
-- `releases/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.1-rc1.html`
+```bash
+sha256sum -c RELEASE_SHA256SUMS.txt
+```
 
-Verify downloaded artifacts against `SHA256SUMS.txt`.
+On Windows PowerShell, compare the value returned by:
+
+```powershell
+Get-FileHash .\AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.2-rc1.html -Algorithm SHA256
+```
+
+with the hash printed in `RELEASE_SHA256SUMS.txt`.
+
+Then open the HTML file in a modern browser. It is self-contained and makes no network requests.
+
+### Privacy behavior
+
+When the downloaded HTML is opened as a local `file://`, Theta-7 deliberately uses **session-only memory** instead of persistent browser `localStorage`. This prevents another local HTML file from reading a persisted Theta-7 record through a shared file origin. Export JSON or Markdown if you want a durable copy.
+
+If the interface is later served from a normal web origin, browser `localStorage` may be used and remains unencrypted.
 
 ### Optional GitHub Pages
 
-The repository includes a pinned manual Pages deployment workflow. The intended URL is:
+The repository contains a pinned manual Pages deployment workflow for the intended URL:
 
-`https://luckygithub777.github.io/aeon-tempus/`
+https://luckygithub777.github.io/aeon-tempus/
 
-Pages is an optional hosted presentation layer; the GitHub Release remains the verified distribution path until Pages is separately enabled and its public result is verified.
+Pages is an optional hosted presentation layer. It is **not currently verified as enabled**, so the GitHub Release is the controlling distribution path.
 
-## Current release candidate
+## What v1.1.2-rc1 fixes
 
-`releases/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.1-rc1.html`
-
-v1.1.1-rc1 corrects the principal findings from the prior V&V review:
-
-- strengthens completion integrity with required substantive fields;
-- labels completion as self-attested sequence completion;
-- clarifies that pilot consent is local-only;
-- warns that browser storage is plaintext/unencrypted;
-- labels clarity changes as session-level self-report signals;
-- uses ASCII-safe exported filenames;
-- cleans the legacy storage key after successful migration;
-- explicitly labels the product as a pilot candidate.
+- release checksum verifies the downloaded filename directly;
+- integrity CI detects stale repository hashes;
+- release automation verifies an existing tag's asset digest instead of silently serving stale bytes;
+- Markdown export includes all seven chambers, lesson, grounded return, and current action;
+- completion errors reveal the relevant collapsed chamber and focus the missing field;
+- completion remains functional when persistent storage is unavailable;
+- local-file use defaults to session-only memory for privacy;
+- clarity remains **Not measured** until both ratings are explicitly changed;
+- desktop chamber chevrons remain aligned in the header row;
+- mobile gets an always-available **Review & Complete** control;
+- print title is visible;
+- changing sample scenarios replaces the prior sample prompt as expected;
+- embedded UI artwork is WebP-compressed while the original PNG source remains preserved.
 
 ## Repository map
 
 - `index.html` — current browser experience
-- `releases/` — current release candidate
-- `assets/` — source visual artwork
-- `docs/` — canon, engineering specification, evidence boundary, validation plan, and V&V
-- `archive/` — preserved historical artifacts, unchanged
-- `tests/` — static V&V checks
-- `SHA256SUMS.txt` — artifact integrity manifest
-
-## Data and privacy
-
-The interface stores user-entered data in browser `localStorage`. It does not send that data anywhere by itself. `localStorage` is not encrypted; do not enter passwords, secrets, classified information, protected medical information, confidential third-party information, or other highly sensitive material.
+- `releases/` — preserved release candidates
+- `assets/` — original source artwork
+- `docs/` — canon, specifications, evidence boundary, validation, and V&V
+- `archive/` — superseded historical artifacts, unchanged
+- `tests/` — static, integrity, and browser regression checks
+- `SHA256SUMS.txt` — repository integrity manifest
+- `RELEASE_SHA256SUMS.txt` — checksum for the current downloadable release asset
 
 ## Evidence status
 
-Technically verified in controlled static and browser-execution checks. Not yet established:
+Current automated and controlled browser checks cover the defects recorded in `docs/VV_UX_REVIEW_2026-10-30.md`. Still not established:
 
-- multi-browser target-device validation;
-- WCAG 2.2 AA conformance;
-- screen-reader validation;
+- Safari and Firefox target-device validation;
+- manual screen-reader validation;
+- complete WCAG 2.2 AA conformance;
 - five-to-ten-person controlled pilot results;
 - broad effectiveness claims;
 - scientific validation of the cosmology.
 
-See `docs/SAFETY_AND_EVIDENCE_BOUNDARY.md` and `docs/VALIDATION_PLAN.md`.
+See `docs/SAFETY_AND_EVIDENCE_BOUNDARY.md`, `docs/VALIDATION_PLAN.md`, and `docs/VV_STATUS_2026-10-30.md`.
 
 ## Public availability and license
 
