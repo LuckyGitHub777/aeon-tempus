@@ -1,0 +1,88 @@
+{
+  "project": "AEON-TEMPUS / Eclipse Node Theta-7",
+  "version": "1.1.1-rc1",
+  "built": "2026-10-30",
+  "status": "public technically verified pilot candidate",
+  "files": [
+    {
+      "path": ".github/workflows/deploy-pages.yml",
+      "sha256": "2aedf36d85978d85c7f9eaacada46a63c4d8ea79579d455eeb7333a6e820a070"
+    },
+    {
+      "path": ".github/workflows/validate.yml",
+      "sha256": "5404db9a653caa62e7134549fef1adf46fdf7233d30d2b0cf81f3bd3e9b79e61"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "b8577bdaab9b7d9f927a78c928d360801a9a20fab5592dc51ed47eef90c0cc83"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "30be9e9d7b1f5ae06345907b2387e91701952e78e913e4c39bb5665e45160aba"
+    },
+    {
+      "path": "NOTICE.md",
+      "sha256": "f19c80d35f43480b61c35ba8b80e3407e18b557b7a39d4f099f4ea6f1ad28835"
+    },
+    {
+      "path": "README.md",
+      "sha256": "43bbd127c25e7a8a2a4f54b311196b17ff5059bf6bae3569a7d6113773ffed77"
+    },
+    {
+      "path": "archive/audit/AEON_TEMPUS_THETA7_FULL_CHAT_VV_REPORT_2026-08-06.md",
+      "sha256": "41f80ad555936ab55d409c6e2843c6cf6bbf23ccb48dcd29ef6eb849905f229e"
+    },
+    {
+      "path": "archive/v1.0.0/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.0.0_FINAL.html",
+      "sha256": "774e45dec1ff0feb280433b0294772b6d34775eb5c0cfd4920334cffcee83e78"
+    },
+    {
+      "path": "archive/v1.1.0/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.0_FINAL_VERIFIED.html",
+      "sha256": "0da5e026b3727d7a19683c02ed0510a600a87f2a04be7a9b62e10815c08211b5"
+    },
+    {
+      "path": "assets/aeon-tempus-poster.png",
+      "sha256": "1de384a979c358a60da9375b15b70e9b88890c1e53ddf7ea4f52413802d9add8"
+    },
+    {
+      "path": "docs/CANON.md",
+      "sha256": "f1cb5daee469c9ccfdbbd4e06eb0214e9f05955e3f4cdc329ff1eb7670192dcc"
+    },
+    {
+      "path": "docs/CHAT_RECONSTRUCTION.md",
+      "sha256": "22e4fceb28fc726a0bb0cf10be5aa19f99d74684f85c33b65dcb21fd21b6305d"
+    },
+    {
+      "path": "docs/SAFETY_AND_EVIDENCE_BOUNDARY.md",
+      "sha256": "b6d644594b8eb973a674108fbbbcf28b7dd1798b5c52f994cd1e3619274cbc53"
+    },
+    {
+      "path": "docs/THETA7_SPEC.md",
+      "sha256": "5778dca1a3643f69032fa2d89759b9ff4f467fce638ac6d485153ebf11e8e066"
+    },
+    {
+      "path": "docs/VALIDATION_PLAN.md",
+      "sha256": "2a515185653828d2e8efdeb70c2fc66d9496d5574d0d3a31ed4e97cf63c6eb67"
+    },
+    {
+      "path": "docs/VV_EVIDENCE_2026-10-30.md",
+      "sha256": "edca14eef2c1d1ad54df97e0f1d0985be47405fc1356d09d8a37d93c5b68e85c"
+    },
+    {
+      "path": "docs/VV_STATUS_2026-10-30.md",
+      "sha256": "7ccf106b3fa1a400096c9a0b45f96789506f3c39145f22c60ca7b7244e6a744f"
+    },
+    {
+      "path": "index.html",
+      "sha256": "cea7c544e6982cfb26719b5e191b8b49228cfb9cbd6f471f7ec397f9680abd00"
+    },
+    {
+      "path": "releases/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.1-rc1.html",
+      "sha256": "cea7c544e6982cfb26719b5e191b8b49228cfb9cbd6f471f7ec397f9680abd00"
+    },
+    {
+      "path": "tests/test_static.py",
+      "sha256": "4d0c676d1a07dced72219b96beaa54b6383f39d7209e32223e614598957af721"
+    }
+  ]
+}
