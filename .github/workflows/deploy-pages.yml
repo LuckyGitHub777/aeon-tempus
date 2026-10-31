@@ -27,6 +27,31 @@ jobs:
           mkdir -p _site
           cp index.html _site/index.html
           touch _site/.nojekyll
+          python3 - <<'PY'
+          from pathlib import Path
+          import struct, math
+          size=16
+          header=struct.pack('<HHH',0,1,1)
+          pixel_offset=6+16+40
+          xor_size=size*size*4
+          and_row=((size+31)//32)*4
+          bytes_in_res=40+xor_size+and_row*size
+          entry=struct.pack('<BBBBHHII',size,size,0,0,1,32,bytes_in_res,22)
+          dib=struct.pack('<IIIHHIIIIII',40,size,size*2,1,32,0,xor_size,0,0,0,0)
+          pixels=bytearray()
+          cx=cy=(size-1)/2
+          for y in range(size-1,-1,-1):
+              for x in range(size):
+                  r=math.hypot(x-cx,y-cy)
+                  if 4.7 <= r <= 6.5:
+                      pixels += bytes((112,169,201,255))
+                  elif r < 1.5:
+                      pixels += bytes((220,232,238,255))
+                  else:
+                      pixels += bytes((0,0,0,0))
+          mask=bytes(and_row*size)
+          Path('_site/favicon.ico').write_bytes(header+entry+dib+pixels+mask)
+          PY
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         with:
@@ -41,7 +66,7 @@ jobs:
           test -n "$SITE_URL"
           for attempt in $(seq 1 20); do
             body="$(curl -fsSL --connect-timeout 10 --max-time 20 "$SITE_URL" || true)"
-            if printf '%s' "$body" | grep -Fq 'ECLIPSE NODE' &&                printf '%s' "$body" | grep -Fq 'v1.1.3-rc1'; then
+            if [[ "$body" == *"ECLIPSE NODE"* && "$body" == *"v1.1.3-rc1"* ]]; then
               echo "Verified live markers: $SITE_URL"
               exit 0
             fi
