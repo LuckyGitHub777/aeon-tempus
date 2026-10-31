@@ -1,7 +1,7 @@
 # Validation Plan
 
 ## Current status
-v1.1.3-rc1 is live on GitHub Pages and remains a pilot candidate rather than a broadly validated product.
+v1.1.4-rc1 is the current candidate for GitHub Pages and remains a pilot candidate rather than a broadly validated product.
 
 Hosted experience: https://luckygithub777.github.io/aeon-tempus/
 

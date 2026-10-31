@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.1.4-rc1 — 2026-10-31
+
+Shared-site privacy corrective release candidate.
+
+### Fixed
+- On `*.github.io`, entries stay in the open tab instead of browser storage, because every project site on that host shares one storage origin.
+- A record autosaved by v1.1.3-rc1 on the website is moved into the tab, removed from shared storage, and flagged **Not saved — export to keep**.
+- The privacy notice now describes both the website and a downloaded copy.
+- The mobile **Review & Complete** button's accessible name now starts with its visible label.
+- Browser regression covers the shared-site mode by serving the page under a `github.io` hostname; the live check expects session-only behavior.
+
 ## v1.1.3-rc1 — 2026-10-30
 
 Privacy and data-loss corrective release candidate.

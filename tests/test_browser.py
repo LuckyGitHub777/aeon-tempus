@@ -1,7 +1,7 @@
 from playwright.sync_api import sync_playwright
 from pathlib import Path
 import json, os, shutil, tempfile
-root=Path(__file__).resolve().parents[1]; html=root/'index.html'
+root=Path(__file__).resolve().parents[1]; html=root/'index.html'; src=html.read_text(encoding='utf-8')
 errors=[]; requests=[]; dialogs=[]
 with sync_playwright() as p:
     exe=os.getenv('THETA7_BROWSER_PATH') or next((shutil.which(x) for x in ('google-chrome','google-chrome-stable','chromium','chromium-browser') if shutil.which(x)),None)
@@ -41,6 +41,28 @@ with sync_playwright() as p:
     page.locator('#arrival').fill('corrected')
     assert page.locator('#arrival').get_attribute('aria-invalid') is None
     assert page.locator('#arrival').get_attribute('aria-describedby') is None
+    # Shared *.github.io origin: session-only, with recovery of earlier hosted autosave.
+    shared_url='https://theta7-check.github.io/aeon-tempus/'
+    ctx=b.new_context(accept_downloads=True,viewport={'width':1280,'height':900})
+    ctx.route('https://theta7-check.github.io/**',lambda route: route.fulfill(status=200,content_type='text/html; charset=utf-8',body=src) if route.request.url.rstrip('/').endswith('/aeon-tempus') else route.fulfill(status=404,body=''))
+    sp=ctx.new_page(); sp.set_default_timeout(8000); shared_dialogs=[]
+    sp.on('pageerror',lambda e:errors.append(str(e)))
+    sp.on('dialog',lambda d:(shared_dialogs.append(d.type),d.accept()))
+    sp.goto(shared_url,wait_until='load')
+    assert sp.evaluate("location.hostname").endswith('.github.io')
+    assert 'shared-site privacy' in sp.locator('#saveState').inner_text()
+    assert 'on this website and in a downloaded copy' in sp.locator('#privacyTop').inner_text()
+    sp.evaluate("localStorage.setItem('aeon-tempus-theta7-v1-1-3-rc1',JSON.stringify({meta:{version:'1.1.3-rc1'},fields:{arrival:'earlier hosted entry'}}))")
+    sp.reload(wait_until='load')
+    assert sp.locator('#arrival').input_value()=='earlier hosted entry'
+    assert sp.evaluate("localStorage.getItem('aeon-tempus-theta7-v1-1-3-rc1')") is None
+    assert sp.locator('#saveState').inner_text()=='Not saved — export to keep'
+    sp.locator('#arrival').fill('shared-site entry'); sp.wait_for_timeout(900)
+    assert sp.evaluate("Object.keys(localStorage).filter(k=>k.startsWith('aeon-tempus')).length")==0
+    sp.reload(wait_until='load')
+    assert shared_dialogs.count('beforeunload')>=1
+    assert sp.locator('#mobileCompleteBtn').get_attribute('aria-label').startswith('Review & Complete')
+    ctx.close()
     assert requests==[] and errors==[]
-    print(json.dumps({'file_mode':'direct','legacy_cleanup':True,'beforeunload':True,'export_clears_dirty':True,'scenario_confirm':True,'error_semantics':True,'requests':requests,'errors':errors},indent=2))
+    print(json.dumps({'file_mode':'direct','legacy_cleanup':True,'beforeunload':True,'export_clears_dirty':True,'scenario_confirm':True,'error_semantics':True,'shared_origin_session_only':True,'shared_origin_recovery':True,'requests':requests,'errors':errors},indent=2))
     b.close()

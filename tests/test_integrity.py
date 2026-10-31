@@ -17,16 +17,18 @@ manifest=json.loads((root/'MANIFEST.json').read_text())
 for item in manifest['files']:
     if entries.get(item['path'])!=item['sha256']: fail.append(f"manifest/sums mismatch {item['path']}")
 current=digest(root/'index.html')
-release=root/'releases/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.3-rc1.html'
+release=root/'releases/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.4-rc1.html'
 if current!=digest(release): fail.append('index/release bytes differ')
 old=root/'releases/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.2-rc1.html'
 if digest(old)!='09c17e62b84726282e5332f5bd4daf6ed14020b3aa7a5587f158448e6bb9f50a': fail.append('v1.1.2-rc1 history changed')
+rc3=root/'releases/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.3-rc1.html'
+if digest(rc3)!='b730b20d11b915e46a469c99f88af31063ed53018fd8ece156a0fe303c909130': fail.append('v1.1.3-rc1 history changed')
 release_line=(root/'RELEASE_SHA256SUMS.txt').read_text().strip().split('  ',1)
-if release_line != [current,'AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.3-rc1.html']: fail.append('release checksum contract mismatch')
+if release_line != [current,'AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.4-rc1.html']: fail.append('release checksum contract mismatch')
 if fail:
     print('\n'.join('FAIL '+x for x in fail)); sys.exit(1)
 print(f'PASS verified {len(entries)} repository digests')
 print('PASS manifest agrees with SHA256SUMS')
-print('PASS current index equals v1.1.3-rc1 release candidate')
-print('PASS v1.1.2-rc1 remains immutable')
+print('PASS current index equals v1.1.4-rc1 release candidate')
+print('PASS v1.1.2-rc1 and v1.1.3-rc1 remain immutable')
 print('PASS release checksum names current downloadable HTML')
