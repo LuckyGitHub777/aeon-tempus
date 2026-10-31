@@ -24,21 +24,21 @@ with sync_playwright() as p:
     page.goto(site,wait_until='load')
     assert page.evaluate("location.protocol")=='https:'
     assert page.locator('body').inner_text().find('ECLIPSE NODE')>=0
-    assert page.locator('body').inner_text().find('v1.1.3-rc1')>=0
+    assert page.locator('body').inner_text().find('v1.1.4-rc1')>=0
     privacy=page.locator('#privacyTop').inner_text()
-    assert 'localStorage may be used and remains unencrypted' in privacy
+    assert 'on this website and in a downloaded copy' in privacy
 
-    page.evaluate("localStorage.clear(); sessionStorage.clear()")
+    # Shared github.io origin: entries stay in the tab and never reach localStorage.
+    def accept_all(d): dialogs.append(d.type); d.accept()
+    page.on('dialog',accept_all)
+    page.locator('#arrival').fill('Hosted session-only check')
+    page.wait_for_timeout(900)
+    assert page.locator('#saveState').inner_text()=='Not saved — export to keep'
+    assert page.evaluate("Object.keys(localStorage).filter(k=>k.startsWith('aeon-tempus')).length")==0
     page.reload(wait_until='load')
+    assert dialogs.count('beforeunload')>=1
     assert page.locator('#arrival').input_value()==''
-
-    # Hosted-mode persistence: edit -> autosave -> reload -> restore.
-    page.locator('#arrival').fill('Hosted persistence check')
-    page.wait_for_function("document.querySelector('#saveState').textContent.startsWith('Saved ')")
-    stored=page.evaluate("localStorage.getItem('aeon-tempus-theta7-v1-1-3-rc1')")
-    assert stored and 'Hosted persistence check' in stored
-    page.reload(wait_until='load')
-    assert page.locator('#arrival').input_value()=='Hosted persistence check'
+    page.remove_listener('dialog',accept_all)
 
     # Custom text must not be silently overwritten by a sample.
     page.click('article.chamber[data-step="2"] .chamber-head')
@@ -82,7 +82,7 @@ with sync_playwright() as p:
     out=Path(tempfile.mkdtemp())/dl.value.suggested_filename
     dl.value.save_as(str(out))
     data=json.loads(out.read_text())
-    assert data['meta']['version']=='1.1.3-rc1'
+    assert data['meta']['version']=='1.1.4-rc1'
     assert data['fields']['selected_action']=='Check the strongest primary evidence before acting.'
 
     # Mobile hosted UX: completion affordance available and no horizontal overflow.
@@ -98,7 +98,7 @@ with sync_playwright() as p:
     print(json.dumps({
       'site_url':site,
       'mode':'hosted-https',
-      'persistence':True,
+      'session_only':True,
       'scenario_protection':True,
       'error_semantics':True,
       'completion':True,
