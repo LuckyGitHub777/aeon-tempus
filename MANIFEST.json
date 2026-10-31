@@ -21,10 +21,6 @@
       "sha256": "b8577bdaab9b7d9f927a78c928d360801a9a20fab5592dc51ed47eef90c0cc83"
     },
     {
-      "path": "archive/audit/AEON_TEMPUS_THETA7_FULL_CHAT_VV_REPORT_2026-08-06.md",
-      "sha256": "41f80ad555936ab55d409c6e2843c6cf6bbf23ccb48dcd29ef6eb849905f229e"
-    },
-    {
       "path": "archive/v1.0.0/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.0.0_FINAL.html",
       "sha256": "774e45dec1ff0feb280433b0294772b6d34775eb5c0cfd4920334cffcee83e78"
     },
@@ -43,10 +39,6 @@
     {
       "path": "docs/CANON.md",
       "sha256": "f1cb5daee469c9ccfdbbd4e06eb0214e9f05955e3f4cdc329ff1eb7670192dcc"
-    },
-    {
-      "path": "docs/CHAT_RECONSTRUCTION.md",
-      "sha256": "22e4fceb28fc726a0bb0cf10be5aa19f99d74684f85c33b65dcb21fd21b6305d"
     },
     {
       "path": "docs/SAFETY_AND_EVIDENCE_BOUNDARY.md",
