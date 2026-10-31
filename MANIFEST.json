@@ -6,7 +6,7 @@
   "files": [
     {
       "path": ".github/workflows/deploy-pages.yml",
-      "sha256": "589833605bd46b4c180ca4b002432e465ad13b46fdfa8efe1ac3af673049306c"
+      "sha256": "2400b9cb2c889843f52efcdb44df1e46c1b62524a645e2da2054dc76939223c3"
     },
     {
       "path": ".github/workflows/publish-prerelease.yml",
