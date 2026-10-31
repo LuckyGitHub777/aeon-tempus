@@ -5,7 +5,7 @@ from pathlib import Path
 
 site=os.environ['SITE_URL'].rstrip('/')+'/'
 origin=urlparse(site).netloc
-errors=[]; external=[]; dialogs=[]
+errors=[]; external=[]; bad_responses=[]; dialogs=[]
 with sync_playwright() as p:
     exe=os.getenv('THETA7_BROWSER_PATH') or next((shutil.which(x) for x in ('google-chrome','google-chrome-stable','chromium','chromium-browser') if shutil.which(x)),None)
     if not exe: raise RuntimeError('No Chromium/Chrome found')
@@ -19,6 +19,7 @@ with sync_playwright() as p:
         if u.scheme in ('http','https') and u.netloc and u.netloc!=origin:
             external.append(r.url)
     page.on('request',request_watch)
+    page.on('response',lambda r: bad_responses.append({'status':r.status,'url':r.url}) if r.status>=400 else None)
 
     page.goto(site,wait_until='load')
     assert page.evaluate("location.protocol")=='https:'
@@ -91,6 +92,7 @@ with sync_playwright() as p:
     assert overflow<=1
 
     assert external==[], external
+    assert bad_responses==[], bad_responses
     assert errors==[], errors
     page.evaluate("localStorage.clear(); sessionStorage.clear()")
     print(json.dumps({
@@ -104,6 +106,7 @@ with sync_playwright() as p:
       'mobile_complete':True,
       'mobile_overflow_px':overflow,
       'external_requests':external,
+      'bad_responses':bad_responses,
       'errors':errors
     },indent=2))
     browser.close()

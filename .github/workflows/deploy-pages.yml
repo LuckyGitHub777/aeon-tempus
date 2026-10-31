@@ -51,6 +51,11 @@ jobs:
                       pixels += bytes((0,0,0,0))
           mask=bytes(and_row*size)
           Path('_site/favicon.ico').write_bytes(header+entry+dib+pixels+mask)
+          page=Path('_site/index.html')
+          html=page.read_text(encoding='utf-8')
+          if 'rel="icon"' not in html:
+              html=html.replace('</head>','  <link rel="icon" href="./favicon.ico">\n</head>',1)
+              page.write_text(html,encoding='utf-8')
           PY
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4

@@ -6,7 +6,7 @@
   "files": [
     {
       "path": ".github/workflows/deploy-pages.yml",
-      "sha256": "2400b9cb2c889843f52efcdb44df1e46c1b62524a645e2da2054dc76939223c3"
+      "sha256": "c105dc62590adb5b2df02459bc3a0ac767a1c855e351909bfd4ff3b69a22700e"
     },
     {
       "path": ".github/workflows/publish-prerelease.yml",
@@ -110,7 +110,7 @@
     },
     {
       "path": "tests/test_live.py",
-      "sha256": "960ea49c733e4c3da1e0beca5a6913f5181f8d092d3de475ec8c4ef51825af6c"
+      "sha256": "fdaa3e8d178620c47966fa5ccc75cb24ada1ccdabf1703d411af025db91f8885"
     },
     {
       "path": "tests/test_static.py",
