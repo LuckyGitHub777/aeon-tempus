@@ -2,7 +2,7 @@
 
 A symbolic, human-governed uncertainty-reflection and decision-support interface.
 
-> **Status:** v1.1.3-rc1 — privacy and data-loss corrective pilot candidate.  
+> **Status:** v1.1.4-rc1 — shared-site privacy corrective pilot candidate.  
 > **Hosted experience:** https://luckygithub777.github.io/aeon-tempus/  
 > **Evidence boundary:** this project does **not** establish a literal spacetime portal, extraterrestrial installation, temporal mechanism, or other paranormal/scientific claim.
 
@@ -15,11 +15,11 @@ The hosted site is the primary browser experience. GitHub Pages deployment is au
 
 For offline use or independent checksum verification, use the current prerelease:
 
-[Open v1.1.3-rc1](https://github.com/LuckyGitHub777/aeon-tempus/releases/tag/v1.1.3-rc1)
+[Open v1.1.4-rc1](https://github.com/LuckyGitHub777/aeon-tempus/releases/tag/v1.1.4-rc1)
 
 Download:
-- [AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.3-rc1.html](https://github.com/LuckyGitHub777/aeon-tempus/releases/download/v1.1.3-rc1/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.3-rc1.html)
-- [RELEASE_SHA256SUMS.txt](https://github.com/LuckyGitHub777/aeon-tempus/releases/download/v1.1.3-rc1/RELEASE_SHA256SUMS.txt)
+- [AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.4-rc1.html](https://github.com/LuckyGitHub777/aeon-tempus/releases/download/v1.1.4-rc1/AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.4-rc1.html)
+- [RELEASE_SHA256SUMS.txt](https://github.com/LuckyGitHub777/aeon-tempus/releases/download/v1.1.4-rc1/RELEASE_SHA256SUMS.txt)
 
 Verify in Linux:
 
@@ -36,20 +36,25 @@ shasum -a 256 -c RELEASE_SHA256SUMS.txt
 Windows PowerShell:
 
 ```powershell
-Get-FileHash .\AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.3-rc1.html -Algorithm SHA256
+Get-FileHash .\AEON_TEMPUS_ECLIPSE_NODE_THETA7_v1.1.4-rc1.html -Algorithm SHA256
 ```
 
 Compare the PowerShell value with `RELEASE_SHA256SUMS.txt`.
 
 ## Privacy and keeping your work
 
-On the hosted GitHub Pages origin, Theta-7 may use browser `localStorage`; that storage is local to the browser profile and is not encrypted.
+Theta-7 keeps entries only for the current tab, both on the website and in a downloaded copy. Browser storage on `*.github.io` is shared by every project site on the same host, and storage for local files can be shared by every local HTML file, so Theta-7 does not write your entries there. **Export JSON or Markdown before closing or reloading if you want to keep the record.** While unexported session data exists, the action bar says **Not saved — export to keep** and the browser is asked to warn before leaving.
 
-When the downloaded HTML is opened as `file://`, Theta-7 keeps entries only for the current tab/session. **Export JSON or Markdown before closing or reloading if you want to keep the record.** While unexported session data exists, the action bar says **Not saved — export to keep** and the browser is asked to warn before leaving.
+On the website, a record that v1.1.3-rc1 autosaved is moved into the open tab and removed from shared storage; export it to keep it. In a downloaded copy, records saved by earlier versions are removed without being read into the form.
 
-On startup in local-file mode, Theta-7 removes compatible legacy localStorage keys from earlier versions without hydrating them into the current form.
+## What v1.1.4-rc1 corrects
 
-## What v1.1.3-rc1 corrects
+- keeps website entries in the tab only, because `*.github.io` storage is shared across project sites;
+- moves a record autosaved by v1.1.3-rc1 on the website into the tab and removes it from shared storage;
+- rewrites the privacy notice for both the website and a downloaded copy;
+- makes the mobile Review & Complete button's accessible name start with its visible label.
+
+Carried forward from v1.1.3-rc1:
 
 - warns before leaving local/session-only work changed since the last export;
 - clears the warning state after JSON or Markdown export;
