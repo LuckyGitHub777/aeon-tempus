@@ -1,15 +1,17 @@
 # Validation Plan
 
 ## Current status
-v1.1.3-rc1 is a privacy and data-loss corrective pilot candidate, not a broadly validated product.
+v1.1.3-rc1 is live on GitHub Pages and remains a pilot candidate rather than a broadly validated product.
+
+Hosted experience: https://luckygithub777.github.io/aeon-tempus/
 
 ## Required pilot validation
-1. Download the current GitHub Release HTML and `RELEASE_SHA256SUMS.txt`; verify the release checksum.
-2. Open the downloaded HTML directly on target Windows and macOS devices; verify session-only local-file behavior, unload warning, export clearing, and legacy cleanup.
-3. Test current Chrome, Edge, Firefox, and Safari where applicable.
-4. Perform a WCAG 2.2 AA-oriented manual audit and screen-reader checks.
-5. Run a controlled 5–10 person pilot using safe, ordinary scenarios.
-6. If GitHub Pages is later enabled, verify the hosted page separately.
+1. Keep the automated GitHub Pages deployment gate green; each deployment must fetch the public HTTPS page and verify the expected AEON-TEMPUS markers.
+2. Download the current GitHub Release HTML and `RELEASE_SHA256SUMS.txt`; verify the release checksum for offline use.
+3. Open the downloaded HTML directly on target Windows and macOS devices; verify session-only local-file behavior, unload warning, export clearing, and legacy cleanup.
+4. Test current Chrome, Edge, Firefox, and Safari where applicable.
+5. Perform a WCAG 2.2 AA-oriented manual audit and screen-reader checks.
+6. Run a controlled 5–10 person pilot using safe, ordinary scenarios.
 
 ## Pilot measures
 Predefine thresholds before testing: independent completion rate, critical misunderstanding rate, actionability, usability, abandonment chamber, safety concerns, completion time, and explicitly rated clarity-before/clarity-after delta.

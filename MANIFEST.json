@@ -30,7 +30,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "a1f86b3c33a03ed412bf086936c3625816707dfca6a94caa804a4d4262621708"
+      "sha256": "aa7476e7154cc8aabf4fa1e0d3cc39ce8e253fc071139da8bb15e07192bbbf7e"
     },
     {
       "path": "RELEASE_SHA256SUMS.txt",
@@ -70,7 +70,7 @@
     },
     {
       "path": "docs/VALIDATION_PLAN.md",
-      "sha256": "e915a927e6d8294a6558233e5309f53f48b0ad365d2fdae6c87949500e0ac738"
+      "sha256": "1d3f45b53f632a1bbf86df691b7ca4cf4ce55c706bad67ec838dc2b3e1890f09"
     },
     {
       "path": "docs/VV_EVIDENCE_2026-10-30.md",
@@ -78,7 +78,7 @@
     },
     {
       "path": "docs/VV_STATUS_2026-10-30.md",
-      "sha256": "8053d9853cbcf889d48655d817464adca4d8f820b37e0dd0f4636d24cc0aa49b"
+      "sha256": "7338370841c488be375d856c004c52221fba7e137b0ecc027a0740ba59a7b327"
     },
     {
       "path": "docs/VV_UX_REVIEW_2026-10-30.md",
